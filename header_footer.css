@@ -21,7 +21,6 @@
 .top-bar a {
   color: #111;
   text-decoration: none;
-  margin-left: 1.5rem;
   position: relative;
   transition: color 0.2s;
 }
@@ -47,18 +46,18 @@
 .logo {
   font-family: 'Hubot Sans', sans-serif;
   font-weight: bold;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   letter-spacing: 1px;
   color: #111;
 }
 
 .nav-links {
   display: flex;
-  gap: 1.5rem;
+  align-items: center;
+  gap: 50px;
 }
 
-.nav-links a,
-.lang-switch {
+.nav-links a {
   font-family: 'Hubot Sans', sans-serif;
   font-weight: 500;
   text-decoration: none;
@@ -70,10 +69,30 @@
   font-weight: 600;
 }
 
-.lang-switch:hover,
 .nav-links a:hover {
   text-decoration: none;
 }
+
+.lang-switch {
+  font-family: 'Hubot Sans', sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+  background-color: #111;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 3px 6px;
+  border-radius: 5px;
+  transition: background-color 0.5s ease;
+}
+
+.lang-switch:hover {
+  background-color: #333;
+  text-decoration: none;
+}
+
 
 /* FOOTER */
 .footer {

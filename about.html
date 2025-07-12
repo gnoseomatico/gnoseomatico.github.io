@@ -25,12 +25,11 @@
 <body>
     <!-- Barra superior -->
     <header class="top-bar">
-        <div class="logo">GNOSEOMÁTICO_</div>
+        <div class="logo" id="logo-text">GNOSEOMÁTICO_</div>
         <nav class="nav-links">
-            <a href="./index.html">[ Inicio ]</a>
-            <a href="./about.html">[ Sobre mí ]</a>
-            <a href="#">[ Publicaciones ]</a>
-            <button class="lang-switch">[ES]</button>
+            <a id="nav-home" href="./index.html">[ Inicio ]</a>
+            <a id="nav-about" href="./about.html">[ Sobre mí ]</a>
+            <button class="lang-switch" id="lang-switch">[ES]</button>
         </nav>
     </header>
 
@@ -41,35 +40,12 @@
         </div>
 
         <div class="post-section-header">
-            <div class="section-title-bg">ABOUT_ME</div>
-            <h2 class="post-section-title">> SOBRE_MI</h2>
+            <div class="section-title-bg" id="about-section-bg">ABOUT_ME</div>
+            <h2 class="post-section-title" id="about-section-title">> SOBRE_MI</h2>
         </div>
 
-        <div class="post-content" style="margin-top: 50px;">
-            <p>Tengo 26 años. Soy de Salta, Argentina, conocida como "La Linda", tan ridículamente quedada en el tiempo,
-                aunque a veces admirable, conocida por sus hermosos paisajes, su arquitectura colonial (un regalito de
-                hace 500 años), y por su gente tan humilde, amorosa, y de piel cobriza y rasgos andinos que a veces
-                terminan siendo parte del paisaje adorado por turistas.</p>
-            <p>Estudié estadística y ahora estoy estudiando otras cosas. No diría necesariamente que me encanta
-                estudiar, pero creo que hay algo bastante maravilloso en el formarse. En un principio era bastante
-                promedio en mi educación, pero en algún momento algún profesor me brindó una mirada crítica hacia el
-                sistema (en general) que terminó dejándome medio traumado con como funciona la sociedad. De nacimiento
-                la estadística fue una disciplina relacionada con el estudio de las sociedades, así que a medida que fui
-                avanzando en mi carrera se me hizo imposible no ver estos fenómenos desde un punto de vista cualitativo,
-                además del cuantitativo inherente al ejercicio estadístico.</p>
-            <p>Creo que siempre quise «hablar» en Internet, pero a medida que fueron avanzando los dioses algorítmicos y
-                las redes sociales, dejé de perder ese interés. Hace no mucho leí un libro que me cambió mi forma de
-                pensar sobre como nuestro condicionamiento en la forma que nos expresamos en internet no es nada más ni
-                nada menos que producto de cierta ingeniería social y de software que surgió paralelamente al desarrollo
-                de Internet, así que heme aquí escribiendo esto.</p>
-            <p>Ahora, a pesar de que soy fanático de la verificabilidad y las fuentes, creo que todos necesitamos un
-                espacio de libertad en donde opinar, por lo que lo que escriba acá no es necesariamente algo
-                "verificable", es una opinión personal, y como toda opinión personal, es subjetiva a mi experiencia. No
-                me hago responsable por lo que yo pueda llegar a decir, probablemente son las voces de mi cabeza o algo
-                así.</p>
-            <p>Sin nada más que agregar, gracias por alejarte un poquito de la hegemonía de las redes sociales y leerme
-                desde una plataforma bastante inusual aunque en sus inicios era prácticamente la única forma de
-                expresarse.</p>
+        <div class="post-content" id="about-content" style="margin-top: 50px;">
+            <!-- Aquí se cargará el contenido desde Markdown -->
         </div>
 
         <div class="post-signature">—Gnoseomático</div>
@@ -80,10 +56,62 @@
         <div class="footer-icons">
             <img src="./svg/notbyai-es.svg" alt="Creado por un humano, no por IA" class="footer-icon" />
             <img src="./svg/notbyai-en.svg" alt="Produced by human, not by AI" class="footer-icon" />
+            <img src="./svg/notbyai-eo.svg" alt="Produkita de homo, ne de AI" class="footer-icon" />
         </div>
     </footer>
 
-    <script src="./post.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const lang = localStorage.getItem("lang") || "es";
+
+            fetch('./translations.json')
+                .then(res => res.json())
+                .then(translations => {
+                    const t = translations[lang];
+                    if (!t) return;
+
+                    // Aplica textos estáticos traducidos
+                    const applyText = (id, value) => {
+                        const el = document.getElementById(id);
+                        if (el) el.textContent = value;
+                    };
+
+                    applyText("logo-text", t.logo_text);
+                    applyText("nav-home", t.nav_home);
+                    applyText("nav-about", t.nav_about);
+                    applyText("lang-switch", t.lang_code);
+                    applyText("about-section-bg", t.about_section_bg);
+                    applyText("about-section-title", t.about_section_title);
+                    applyText("footer-text", t.footer_text);
+
+                    // Carga el markdown correspondiente
+                    const mdFile = `./posts/about_${lang}.md`;
+
+                    fetch(mdFile)
+                        .then(res => {
+                            if (!res.ok) throw new Error("Markdown no encontrado");
+                            return res.text();
+                        })
+                        .then(md => {
+                            const html = marked.parse(md);
+                            document.getElementById("about-content").innerHTML = html;
+                        })
+                        .catch(err => {
+                            document.getElementById("about-content").innerHTML = "<p>There's no translation available.</p>";
+                            console.error(err);
+                        });
+                });
+
+            // Cambiar idioma al click
+            document.getElementById("lang-switch").addEventListener("click", () => {
+                const current = localStorage.getItem("lang") || "es";
+                const next = current === "es" ? "eo" : "es";
+                localStorage.setItem("lang", next);
+                location.reload();
+            });
+        });
+    </script>
+
 </body>
 
 </html>

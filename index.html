@@ -23,34 +23,34 @@
 
 <body>
     <header class="top-bar">
-        <div class="logo">GNOSEOMÁTICO_</div>
+        <div class="logo" id="logo-text">GNOSEOMÁTICO_</div>
         <nav class="nav-links">
-            <a href="./index.html">[ Inicio ]</a>
-            <a href="./about.html">[ Sobre mí ]</a>
-            <a href="#post-list-container">[ Publicaciones ]</a>
-            <button class="lang-switch">[ES]</button>
+            <a id="nav-home" href="./index.html">[ Inicio ]</a>
+            <a id="nav-about" href="./about.html">[ Sobre mí ]</a>
+            <button class="lang-switch" id="lang-switch">[ES]</button>
         </nav>
     </header>
 
     <main class="post-list" id="post-list-container">
         <div class="post-section-header">
-            <div class="section-title-bg">POSTS</div>
-            <h2 class="post-section-title">> PUBLICACIONES</h2>
+            <div class="section-title-bg" id="posts-label-bg">POSTS</div>
+            <h2 class="post-section-title" id="posts-label">> PUBLICACIONES</h2>
         </div>
 
         <div id="post-list"></div>
     </main>
 
     <footer class="footer">
-        <div class="footer-text">GNOSEOMÁTICO — 2025</div>
+        <div class="footer-text" id="footer-text">GNOSEOMÁTICO — 2025</div>
         <div class="footer-icons">
             <img src="./svg/notbyai-es.svg" alt="Creado por un humano, no por IA" class="footer-icon" />
             <img src="./svg/notbyai-en.svg" alt="Produced by human, not by AI" class="footer-icon" />
+            <img src="./svg/notbyai-eo.svg" alt="Produkita de homo, ne de AI" class="footer-icon" />
         </div>
     </footer>
 
-
     <script src="./script.js"></script>
+    <script src="./translation.js"></script>
 </body>
 
 </html>
