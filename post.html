@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gnosis Marginal</title>
+    <title>Entrada</title>
 
-    <!-- Estilos -->
+    <!-- Styles -->
     <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./post.css" />
     <link rel="stylesheet" href="./header_footer.css" />
 
     <!-- Scripts -->
@@ -22,23 +23,19 @@
 </head>
 
 <body>
+    <!-- Barra superior -->
     <header class="top-bar">
         <div class="logo">GNOSEOMÁTICO_</div>
         <nav class="nav-links">
             <a href="./index.html">[ Inicio ]</a>
             <a href="./about.html">[ Sobre mí ]</a>
-            <a href="#post-list-container">[ Publicaciones ]</a>
+            <a href="#">[ Publicaciones ]</a>
             <button class="lang-switch">[ES]</button>
         </nav>
     </header>
 
-    <main class="post-list" id="post-list-container">
-        <div class="post-section-header">
-            <div class="section-title-bg">POSTS</div>
-            <h2 class="post-section-title">> PUBLICACIONES</h2>
-        </div>
-
-        <div id="post-list"></div>
+    <main class="post-body" id="post-container">
+        <!-- Aquí se cargará dinámicamente la entrada -->
     </main>
 
     <footer class="footer">
@@ -49,8 +46,7 @@
         </div>
     </footer>
 
-
-    <script src="./script.js"></script>
+    <script src="./post.js"></script>
 </body>
 
 </html>

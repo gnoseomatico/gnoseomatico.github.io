@@ -1,0 +1,143 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #f4f1ec;
+  color: #222;
+  width: 100%;
+  overflow-x: hidden;
+  padding-top: 75px;
+}
+
+/* Contenedor centrado */
+body>main {
+  width: 60%;
+  margin: 0 auto;
+}
+
+/* Lista de posts */
+.post-list {
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.post-section-header {
+  position: relative;
+}
+
+.section-title-bg {
+  position: absolute;
+  top: -3.5rem;
+  left: 0;
+  font-size: 6rem;
+  font-weight: 800;
+  color: #444;
+  opacity: 0.1;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  font-family: 'Hubot Sans', sans-serif;
+  letter-spacing: 15px;
+  white-space: nowrap;
+}
+
+.post-section-title {
+  position: relative;
+  z-index: 1;
+  font-size: 2rem;
+  font-family: 'Hubot Sans', sans-serif;
+  letter-spacing: 1px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #111;
+  padding-bottom: 50px;
+  border-bottom: 3px solid #222;
+}
+
+/* Tarjeta */
+.post-card {
+  display: flex;
+  border: 2px solid #222;
+  padding: 1.5rem;
+  background-color: #fdfcf9;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateX(20px);
+  animation: postEnter 0.4s ease-out forwards;
+}
+
+.post-card:hover {
+  background-color: #e5dfd6;
+}
+
+@keyframes postEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.post-number {
+  font-family: 'Hubot Sans', sans-serif;
+  font-weight: 800;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-right: 1rem;
+  color: #444;
+  min-width: 80px;
+  text-align: right;
+  align-self: center;
+}
+
+.post-content {
+  flex: 1;
+}
+
+.post-date {
+  font-family: 'Hubot Sans', sans-serif;
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.3rem;
+}
+
+.post-title {
+  font-family: 'Hubot Sans', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  color: #111;
+}
+
+.post-tags {
+  font-family: 'Hubot Sans', sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 0.5rem;
+}
+
+.post-excerpt {
+  font-size: 1rem;
+  color: #222;
+  line-height: 1.5;
+}
