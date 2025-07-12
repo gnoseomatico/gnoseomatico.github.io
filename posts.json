@@ -1,10 +1,19 @@
 [
   {
-    "file": "001.md",
-    "number": "001",
-    "title": "Mi primer post",
-    "date": "2025-07-01",
-    "tags": ["pensamiento", "inauguración"],
-    "excerpt": "Una breve reflexión sobre el inicio de este blog y el propósito de Gnosis Marginal."
+    "number": "000",
+    "title": {
+      "es": "Introducción: el ser y el interactuar",
+      "eo": "Introducción: el ser y el interactuar"
+    },
+    "file": {
+      "es": "000_es.md",
+      "eo": "000_eo.md"
+    },
+    "tags": ["Sociedad", "Tecnología"],
+    "date": "2025-07-12",
+    "excerpt": {
+      "es": "¿Por qué interactuamos así en Internet?",
+      "eo": "¿Por qué interactuamos así en Internet?"
+    }
   }
 ]

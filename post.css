@@ -27,6 +27,7 @@
 .post-title {
   position: relative;
   font-family: 'Hubot Sans', sans-serif;
+  line-height: 1;
   font-weight: 700;
   font-size: 3rem;
   letter-spacing: 1px;
@@ -145,10 +146,10 @@
   transform: scaleX(1);
 }
 
-/* Barra de progreso justo debajo de la top-bar fija */
+/* BARRA DE PROGRESO */
 .progress-bar-container {
   position: fixed;
-  top: 74px; /* altura de .top-bar (~1rem padding + font) */
+  top: 66px; /* altura de .top-bar (~1rem padding + font) */
   left: 0;
   right: 0;
   height: 6px;
@@ -235,8 +236,16 @@
   border-left: 4px solid #ccc;
   padding-left: 1rem;
   color: #555;
-  margin: 1rem auto;
+  margin: 50px auto;
 }
+.post-content blockquote footer {
+  display: block;
+  text-align: right;
+  margin-top: 0.5rem;
+  font-style: italic;
+  color: #666;
+}
+
 
 /* Bloques de código */
 .post-content pre {
