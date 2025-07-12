@@ -65,3 +65,18 @@ if (!postNumber) {
                 });
         });
 }
+
+window.addEventListener("scroll", () => {
+    const progressBar = document.getElementById("progress-bar");
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+
+    progressBar.style.width = scrollPercent + "%";
+
+    if (scrollPercent >= 99.5) {
+        progressBar.style.backgroundColor = "#006400"; // Verde oscuro al final
+    } else {
+        progressBar.style.backgroundColor = "#222"; // Color normal mientras se lee
+    }
+});
