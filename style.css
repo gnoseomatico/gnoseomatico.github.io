@@ -95,13 +95,19 @@ body>main {
 .post-number {
   font-family: 'Hubot Sans', sans-serif;
   font-weight: 800;
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: bold;
   color: #444;
-  min-width: 80px;
+  width: auto;
   text-align: left;
   align-self: center;
-  margin-right: 10px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  letter-spacing: 7px;
+  margin: 0;
+  margin-right: 20px;
+  padding: 0;
+  line-height: 1;
 }
 
 .post-content {
@@ -121,6 +127,7 @@ body>main {
 
 .post-title {
   font-family: 'Hubot Sans', sans-serif;
+  text-align: start;
   font-weight: 600;
   letter-spacing: 1px;
   font-size: 1.5rem;
