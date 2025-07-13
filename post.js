@@ -103,7 +103,7 @@ if (!postNumber) {
     });
 }
 
-// Scroll progress bar (igual que antes)
+// Scroll progress bar
 window.addEventListener("scroll", () => {
   const progressBar = document.getElementById("progress-bar");
   const scrollTop = window.scrollY;
@@ -117,4 +117,19 @@ window.addEventListener("scroll", () => {
   } else {
     progressBar.style.backgroundColor = "#222"; // Color normal mientras se lee
   }
+});
+
+// BOTÓN DE MENÚ
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+const menuIcon = document.getElementById('menu-icon');
+
+let menuOpen = false;
+
+menuToggle.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+
+    navLinks.classList.toggle('open');
+    menuIcon.src = menuOpen ? './svg/close_menu.svg' : './svg/menu.svg';
+    menuToggle.setAttribute('aria-label', menuOpen ? 'Cerrar menú' : 'Abrir menú');
 });
