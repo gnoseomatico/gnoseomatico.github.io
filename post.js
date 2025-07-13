@@ -101,6 +101,7 @@ if (!postNumber) {
     });
 }
 
+// BARRA DE PROGRESO
 window.addEventListener("scroll", () => {
   const progressBar = document.getElementById("progress-bar");
   const scrollTop = window.scrollY;
@@ -114,7 +115,6 @@ window.addEventListener("scroll", () => {
   progressBar.style.width = scrollPercent + "%";
   progressBar.style.backgroundColor = scrollPercent >= 99.5 ? colorComplete : colorNormal;
 });
-
 
 // BOTÓN DE MENÚ
 const menuToggle = document.getElementById('menu-toggle');
@@ -133,17 +133,27 @@ const updateMenuIcon = () => {
   }
 };
 
-// Evento de clic en botón de menú
-menuToggle.addEventListener('click', () => {
-  menuOpen = !menuOpen;
-  navLinks.classList.toggle('open');
-  menuToggle.setAttribute('aria-label', menuOpen ? 'Cerrar menú' : 'Abrir menú');
-  updateMenuIcon();
-});
-
 // Al cargar la página, actualizar ícono por si ya hay tema activo
 document.addEventListener("DOMContentLoaded", () => {
   updateMenuIcon();
+});
+
+const progressContainer = document.getElementById("progress-bar-container");
+
+// Evento de hacer click en el menú
+menuToggle.addEventListener('click', () => {
+  menuOpen = !menuOpen;
+
+  menuToggle.setAttribute('aria-label', menuOpen ? 'Cerrar menú' : 'Abrir menú');
+  navLinks.classList.toggle('open');
+  updateMenuIcon();
+
+  // ACTUALIZAR POSICIÓN DE LA BARRA DE PROGRESO
+  if (menuOpen) {
+    progressContainer.style.top = "217px"; // Ajustá según altura del menú desplegado
+  } else {
+    progressContainer.style.top = "67px";  // Valor normal
+  }
 });
 
 
