@@ -43,9 +43,10 @@
 
 .post-content {
   text-align: justify;
-  font-family: 'Ledger', sans-serif;
+  font-family: "Vollkorn", serif;
   font-size: 1.2rem;
-  line-height: 1.6;
+  line-height: 1.5;
+  font-weight: 400;
 }
 
 .post-content p {
@@ -106,7 +107,7 @@
   margin-top: 3rem;
   margin-bottom: 2rem;
   color: #444;
-  font-family: 'Ledger', serif;
+  font-family: "Vollkorn", serif;
 }
 
 /* CONTROLES DE NAVEGACIÓN */
@@ -275,7 +276,7 @@
 
 /* Imágenes */
 .post-content img {
-  max-width: 100%;
+  max-width: 75%;
   border-radius: 6px;
   margin: 1rem 0;
 }

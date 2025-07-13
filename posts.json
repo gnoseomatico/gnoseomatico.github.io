@@ -9,10 +9,13 @@
       "es": "000_es.md",
       "eo": "000_eo.md"
     },
-    "tags": ["Sociedad", "Tecnología"],
+    "tags": [
+      "Sociedad",
+      "Tecnología"
+    ],
     "date": "2025-07-12",
     "excerpt": {
-      "es": "¿Por qué interactuamos así en Internet?",
+      "es": "Quiero empezar este blog como un espacio de expresión y reflexión individual frente a la homogeneización del comportamiento online. Basado en experiencias con MetroFLOG, cuestionando la sumisión a normas impuestas por tecnologías que nosotros creamos, creo que las plataformas digitales condicionan nuestras interacciones.",
       "eo": "¿Por qué interactuamos así en Internet?"
     }
   }
