@@ -127,6 +127,15 @@ body>main {
     max-width: 90%;
 }
 
+.post-content blockquote {
+  width: 85%;
+}
+
+/* Imágenes */
+.post-content img {
+  width: 90%;
+}
+
 /* VOLVER AL INICIO */
 .back-link {
     margin-bottom: 30px;
