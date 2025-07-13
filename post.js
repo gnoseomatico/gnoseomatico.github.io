@@ -133,3 +133,34 @@ menuToggle.addEventListener('click', () => {
     menuIcon.src = menuOpen ? './svg/close_menu.svg' : './svg/menu.svg';
     menuToggle.setAttribute('aria-label', menuOpen ? 'Cerrar menú' : 'Abrir menú');
 });
+
+// MODO OSCURO
+document.addEventListener("DOMContentLoaded", () => {
+  const theme = localStorage.getItem("theme") || "light";
+  const body = document.body;
+  const html = document.documentElement;
+  const icon = document.getElementById("theme-icon");
+
+  const applyTheme = (theme) => {
+    if (theme === "dark") {
+      body.classList.add("dark");
+      html.classList.add("dark");
+      icon.src = "./svg/moon_b.svg"; // Ícono sol negro
+      icon.alt = "Modo claro";
+    } else {
+      body.classList.remove("dark");
+      html.classList.remove("dark");
+      icon.src = "./svg/sun_w.svg"; // Ícono luna negro
+      icon.alt = "Modo oscuro";
+    }
+  };
+
+  applyTheme(theme);
+
+  document.getElementById("theme-switch").addEventListener("click", () => {
+    const current = localStorage.getItem("theme") || "light";
+    const next = current === "light" ? "dark" : "light";
+    localStorage.setItem("theme", next);
+    applyTheme(next);
+  });
+});

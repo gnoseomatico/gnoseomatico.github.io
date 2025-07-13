@@ -1,3 +1,23 @@
+/* VARIABLES */
+:root {
+  --background-color: #f4f1ec;
+  --base-color: rgba(220, 211, 197, 0.50);
+  --primary-color: #222831;
+  --secondary-color: #393E46;
+  --tertiary-color: #948979;
+  --quaternary-color: #DFD0B8;
+}
+
+/* COLORES MODO OSCURO */
+body.dark, html.dark {
+  --background-color: #0c0e11;
+  --base-color: rgba(34, 40, 49, 0.50);
+  --primary-color: #f4f1ec;
+  --secondary-color: #DFD0B8;
+  --tertiary-color: #948979;
+  --quaternary-color: #DFD0B8;
+}
+
 /* Reset básico */
 * {
   margin: 0;
@@ -5,10 +25,9 @@
   box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
   font-family: 'Helvetica Neue', sans-serif;
-  background-color: #f4f1ec;
+  background-color: var(--background-color);
   color: #222;
   width: 100%;
   overflow-x: hidden;
@@ -45,7 +64,7 @@ body>main {
   left: 0;
   font-size: 6rem;
   font-weight: 800;
-  color: #444;
+  color: var(--primary-color);
   opacity: 0.1;
   pointer-events: none;
   user-select: none;
@@ -63,17 +82,17 @@ body>main {
   letter-spacing: 1px;
   font-weight: 600;
   text-transform: uppercase;
-  color: #111;
+  color: var(--primary-color);
   padding-bottom: 50px;
-  border-bottom: 3px solid #222;
+  border-bottom: 3px solid var(--primary-color);
 }
 
 /* Tarjeta */
 .post-card {
   display: flex;
-  border: 2px solid #222;
+  border: 2px solid var(--primary-color);
   padding: 1.5rem;
-  background-color: #fdfcf9;
+  background-color: var(--background-color);
   transition: background-color 0.3s;
   cursor: pointer;
   opacity: 0;
@@ -82,7 +101,7 @@ body>main {
 }
 
 .post-card:hover {
-  background-color: #e5dfd6;
+  background-color: var(--base-color);
 }
 
 @keyframes postEnter {
@@ -97,7 +116,7 @@ body>main {
   font-weight: 800;
   font-size: 4rem;
   font-weight: bold;
-  color: #444;
+  color: var(--primary-color);
   width: auto;
   text-align: left;
   align-self: center;
@@ -121,7 +140,7 @@ body>main {
   font-weight: 400;
   letter-spacing: 1px;
   font-size: 0.9rem;
-  color: #555;
+  color: var(--secondary-color);
   margin-bottom: 0.3rem;
 }
 
@@ -133,7 +152,7 @@ body>main {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 0.3rem;
-  color: #111;
+  color: var(--primary-color);
 }
 
 .post-tags {
@@ -141,12 +160,13 @@ body>main {
   font-weight: 300;
   letter-spacing: 1px;
   font-size: 0.9rem;
-  color: #777;
+  color: var(--secondary-color);
+  opacity: 0.7;
   margin-bottom: 0.5rem;
 }
 
 .post-excerpt {
   font-size: 1rem;
-  color: #222;
+  color: var(--primary-color);
   line-height: 1.5;
 }
