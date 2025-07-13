@@ -6,6 +6,8 @@
   --secondary-color: #393E46;
   --tertiary-color: #948979;
   --quaternary-color: #DFD0B8;
+  --progress-color: #222831;
+  --progress-complete: #006400;
 }
 
 /* COLORES MODO OSCURO */
@@ -16,6 +18,8 @@ body.dark {
   --secondary-color: #DFD0B8;
   --tertiary-color: #948979;
   --quaternary-color: #DFD0B8;
+  --progress-color: #f4f1ec;
+  --progress-complete: #00aa00;
 }
 
 .post-body {
@@ -75,7 +79,7 @@ body.dark {
 }
 
 .rect-line {
-  width:75%;
+  width: 75%;
   margin: 50px 0%;
   height: 3px;
   background-color: var(--primary-color);
@@ -173,7 +177,8 @@ body.dark {
 /* BARRA DE PROGRESO */
 .progress-bar-container {
   position: fixed;
-  top: 66px; /* altura de .top-bar (~1rem padding + font) */
+  top: 67px;
+  /* altura de .top-bar (~1rem padding + font) */
   left: 0;
   right: 0;
   height: 6px;
@@ -262,6 +267,7 @@ body.dark {
   color: var(--tertiary-color);
   margin: 50px auto;
 }
+
 .post-content blockquote footer {
   display: block;
   text-align: right;

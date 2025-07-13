@@ -46,12 +46,27 @@ const menuIcon = document.getElementById('menu-icon');
 
 let menuOpen = false;
 
-menuToggle.addEventListener('click', () => {
-    menuOpen = !menuOpen;
+// Función para actualizar el ícono según tema y estado
+const updateMenuIcon = () => {
+  const isDark = document.body.classList.contains('dark');
+  if (menuOpen) {
+    menuIcon.src = isDark ? './svg/close_menu_w.svg' : './svg/close_menu_b.svg';
+  } else {
+    menuIcon.src = isDark ? './svg/menu_w.svg' : './svg/menu_b.svg';
+  }
+};
 
-    navLinks.classList.toggle('open');
-    menuIcon.src = menuOpen ? './svg/close_menu.svg' : './svg/menu.svg';
-    menuToggle.setAttribute('aria-label', menuOpen ? 'Cerrar menú' : 'Abrir menú');
+// Evento de clic en botón de menú
+menuToggle.addEventListener('click', () => {
+  menuOpen = !menuOpen;
+  navLinks.classList.toggle('open');
+  menuToggle.setAttribute('aria-label', menuOpen ? 'Cerrar menú' : 'Abrir menú');
+  updateMenuIcon();
+});
+
+// Al cargar la página, actualizar ícono por si ya hay tema activo
+document.addEventListener("DOMContentLoaded", () => {
+  updateMenuIcon();
 });
 
 // MODO OSCURO
@@ -73,6 +88,8 @@ document.addEventListener("DOMContentLoaded", () => {
       icon.src = "./svg/sun_w.svg"; // Ícono luna negro
       icon.alt = "Modo oscuro";
     }
+
+    updateMenuIcon(); // <-- Actualiza ícono del menú según tema
   };
 
   applyTheme(theme);
