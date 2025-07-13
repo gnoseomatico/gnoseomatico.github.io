@@ -55,31 +55,29 @@ if (!postNumber) {
 
           const navControls = `
             <div class="post-nav-controls">
-              ${
-                prevPost
-                  ? `<a class="post-nav prev-post" href="post.html?post=${prevPost.number}">← ${
-                      lang === "es"
-                        ? "PUBLICACIÓN ANTERIOR"
-                        : "ANTAUAA PUBLIKO"
-                    }</a>`
-                  : `<div></div>`
-              }
-              ${
-                nextPost
-                  ? `<a class="post-nav next-post" href="post.html?post=${nextPost.number}">${
-                      lang === "es" ? "PUBLICACIÓN SIGUIENTE →" : "SEQUANTA PUBLIKO →"
-                    }</a>`
-                  : `<div></div>`
-              }
+              ${prevPost
+              ? `<a class="post-nav prev-post" href="post.html?post=${prevPost.number}">← ${lang === "es"
+                ? "PUBLICACIÓN ANTERIOR"
+                : "ANTAUAA PUBLIKO"
+              }</a>`
+              : `<div></div>`
+            }
+              ${nextPost
+              ? `<a class="post-nav next-post" href="post.html?post=${nextPost.number}">${lang === "es" ? "PUBLICACIÓN SIGUIENTE →" : "SEQUANTA PUBLIKO →"
+              }</a>`
+              : `<div></div>`
+            }
             </div>
           `;
 
           const backText = lang === "es" ? "VOLVER AL INICIO" : "REVENI AL KOMENCON";
+          const theme = localStorage.getItem("theme") || "light";
+          const backIcon = theme === "dark" ? "left_arrow_w.svg" : "left_arrow_b.svg"
 
           container.innerHTML = `
             <article class="full-post">
               <div class="back-link">
-                <img src="./svg/left_arrow.svg" alt="Flecha hacia atrás" />
+                <img  id="back-icon" src="./svg/${backIcon}" alt="Flecha hacia atrás" />
                 <a href="./index.html">${backText}</a>
               </div>
               <section class="post-header">
@@ -167,6 +165,11 @@ document.addEventListener("DOMContentLoaded", () => {
       html.classList.remove("dark");
       icon.src = "./svg/sun_w.svg"; // Ícono luna negro
       icon.alt = "Modo oscuro";
+    }
+
+    const backIcon = document.getElementById("back-icon");
+    if (backIcon) {
+      backIcon.src = theme === "dark" ? "./svg/left_arrow_w.svg" : "./svg/left_arrow_b.svg";
     }
 
     updateMenuIcon(); // <-- Actualiza ícono del menú según tema
