@@ -38,3 +38,18 @@ fetch("posts.json")
                 });
         });
     });
+
+// BOTÓN DE MENÚ
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+const menuIcon = document.getElementById('menu-icon');
+
+let menuOpen = false;
+
+menuToggle.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+
+    navLinks.classList.toggle('open');
+    menuIcon.src = menuOpen ? './svg/close_menu.svg' : './svg/menu.svg';
+    menuToggle.setAttribute('aria-label', menuOpen ? 'Cerrar menú' : 'Abrir menú');
+});

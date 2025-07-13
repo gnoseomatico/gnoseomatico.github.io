@@ -97,11 +97,11 @@ body>main {
   font-weight: 800;
   font-size: 3rem;
   font-weight: bold;
-  margin-right: 1rem;
   color: #444;
   min-width: 80px;
-  text-align: right;
+  text-align: left;
   align-self: center;
+  margin-right: 10px;
 }
 
 .post-content {

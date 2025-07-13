@@ -124,3 +124,8 @@
   height: 3rem;
   width: auto;  /* mantiene proporción */
 }
+
+/* BOTÓN DE MENÚ */
+.menu-toggle {
+  display: none;
+}

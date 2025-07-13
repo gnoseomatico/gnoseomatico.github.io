@@ -92,7 +92,6 @@ if (!postNumber) {
               </div>
               <hr class="rect-line" />
               <div class="post-content">${htmlContent}</div>
-              <div class="post-signature">—Gnoseomático</div>
               ${navControls}
             </article>
           `;
@@ -109,7 +108,7 @@ window.addEventListener("scroll", () => {
   const progressBar = document.getElementById("progress-bar");
   const scrollTop = window.scrollY;
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const scrollPercent = (scrollTop / docHeight) * 115;
+  const scrollPercent = (scrollTop / docHeight) * 105;
 
   progressBar.style.width = scrollPercent + "%";
 
