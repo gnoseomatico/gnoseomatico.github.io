@@ -4,19 +4,6 @@ const langSwitchBtn = document.getElementById("lang-switch");
 // Obtener idioma actual o defecto "es"
 let lang = localStorage.getItem("lang") || "es";
 
-// Actualizar texto del botón según idioma
-const updateLangSwitchText = (lang) => {
-  langSwitchBtn.textContent = lang === "es" ? "[ES]" : "[EO]";
-};
-updateLangSwitchText(lang);
-
-// Cambiar idioma al hacer click y recargar la página
-langSwitchBtn.addEventListener("click", () => {
-  lang = lang === "es" ? "eo" : "es";
-  localStorage.setItem("lang", lang);
-  location.reload();
-});
-
 // Obtener número del post desde la URL
 const params = new URLSearchParams(window.location.search);
 const postNumber = params.get("post");
@@ -49,6 +36,8 @@ if (!postNumber) {
           const prevPost = posts[currentIndex - 1];
           const nextPost = posts[currentIndex + 1];
 
+          document.title = `${title} | GNOSEOMÁTICO_`;
+
           const navControls = `
             <div class="post-nav-controls">
               ${prevPost
@@ -66,7 +55,7 @@ if (!postNumber) {
             </div>
           `;
 
-          const backText = lang === "es" ? "VOLVER AL INICIO" : "REVENI AL LA ĈEFPAGO";
+          const backText = lang === "es" ? "VOLVER AL INICIO" : "REVENI AL LA ĈEFPAĜO";
           const theme = localStorage.getItem("theme") || "light";
           const backIcon = theme === "dark" ? "left_arrow_w.svg" : "left_arrow_b.svg"
 
