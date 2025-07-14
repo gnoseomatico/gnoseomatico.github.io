@@ -18,7 +18,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hubot+Sans:ital,wght@0,200..900;1,200..900&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hubot+Sans:ital,wght@0,200..900;1,200..900&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -30,17 +32,20 @@
             <a id="nav-home" href="./index.html">[ Inicio ]</a>
             <a id="nav-about" href="./about.html">[ Sobre mí ]</a>
             <button class="lang-switch" id="lang-switch">[ES]</button>
+            <button class="theme-switch" id="theme-switch">
+                <img id="theme-icon" src="./svg/sun_w.svg" alt="Cambiar tema" />
+            </button>
         </nav>
 
         <!-- Botón de menú hamburguesa (visible solo en móvil) -->
         <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
-            <img src="./svg/menu.svg" alt="Abrir menú" id="menu-icon">
+            <img src="./svg/menu_b.svg" alt="Abrir menú" id="menu-icon">
         </button>
     </header>
 
     <main class="post-body">
         <div class="back-link">
-            <img src="./svg/left_arrow.svg" alt="Flecha hacia atrás">
+            <img id="back-icon" src="./svg/left_arrow.svg" alt="Flecha hacia atrás">
             <a href="./index.html">VOLVER AL INICIO</a>
         </div>
 
@@ -113,6 +118,76 @@
                 const next = current === "es" ? "eo" : "es";
                 localStorage.setItem("lang", next);
                 location.reload();
+            });
+        });
+
+        // BOTÓN DE MENÚ
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        const menuIcon = document.getElementById('menu-icon');
+
+        let menuOpen = false;
+
+        // Función para actualizar el ícono según tema y estado
+        const updateMenuIcon = () => {
+            const isDark = document.body.classList.contains('dark');
+            if (menuOpen) {
+                menuIcon.src = isDark ? './svg/close_menu_w.svg' : './svg/close_menu_b.svg';
+            } else {
+                menuIcon.src = isDark ? './svg/menu_w.svg' : './svg/menu_b.svg';
+            }
+        };
+
+        // Al cargar la página, actualizar ícono por si ya hay tema activo
+        document.addEventListener("DOMContentLoaded", () => {
+            updateMenuIcon();
+        });
+
+        // Evento de hacer click en el menú
+        menuToggle.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+
+            menuToggle.setAttribute('aria-label', menuOpen ? 'Cerrar menú' : 'Abrir menú');
+            navLinks.classList.toggle('open');
+            updateMenuIcon();
+        });
+
+
+        // MODO OSCURO
+        document.addEventListener("DOMContentLoaded", () => {
+            const theme = localStorage.getItem("theme") || "light";
+            const body = document.body;
+            const html = document.documentElement;
+            const icon = document.getElementById("theme-icon");
+
+            const applyTheme = (theme) => {
+                if (theme === "dark") {
+                    body.classList.add("dark");
+                    html.classList.add("dark");
+                    icon.src = "./svg/moon_b.svg"; // Ícono sol negro
+                    icon.alt = "Modo claro";
+                } else {
+                    body.classList.remove("dark");
+                    html.classList.remove("dark");
+                    icon.src = "./svg/sun_w.svg"; // Ícono luna negro
+                    icon.alt = "Modo oscuro";
+                }
+
+                const backIcon = document.getElementById("back-icon");
+                if (backIcon) {
+                    backIcon.src = theme === "dark" ? "./svg/left_arrow_w.svg" : "./svg/left_arrow_b.svg";
+                }
+
+                updateMenuIcon(); // <-- Actualiza ícono del menú según tema
+            };
+
+            applyTheme(theme);
+
+            document.getElementById("theme-switch").addEventListener("click", () => {
+                const current = localStorage.getItem("theme") || "light";
+                const next = current === "light" ? "dark" : "light";
+                localStorage.setItem("theme", next);
+                applyTheme(next);
             });
         });
     </script>

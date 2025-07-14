@@ -45,10 +45,6 @@ if (!postNumber) {
         .then((md) => {
           const htmlContent = marked.parse(md);
 
-          const tags = Array.isArray(post.tags)
-            ? post.tags.join(" - ")
-            : post.tags || "";
-
           const currentIndex = posts.findIndex((p) => p.number === postNumber);
           const prevPost = posts[currentIndex - 1];
           const nextPost = posts[currentIndex + 1];
@@ -58,21 +54,24 @@ if (!postNumber) {
               ${prevPost
               ? `<a class="post-nav prev-post" href="post.html?post=${prevPost.number}">← ${lang === "es"
                 ? "PUBLICACIÓN ANTERIOR"
-                : "ANTAUAA PUBLIKO"
+                : "ANTAŬA AFIŜO"
               }</a>`
               : `<div></div>`
             }
               ${nextPost
-              ? `<a class="post-nav next-post" href="post.html?post=${nextPost.number}">${lang === "es" ? "PUBLICACIÓN SIGUIENTE →" : "SEQUANTA PUBLIKO →"
+              ? `<a class="post-nav next-post" href="post.html?post=${nextPost.number}">${lang === "es" ? "PUBLICACIÓN SIGUIENTE →" : "SEKVA AFIŜO →"
               }</a>`
               : `<div></div>`
             }
             </div>
           `;
 
-          const backText = lang === "es" ? "VOLVER AL INICIO" : "REVENI AL KOMENCON";
+          const backText = lang === "es" ? "VOLVER AL INICIO" : "REVENI AL LA ĈEFPAGO";
           const theme = localStorage.getItem("theme") || "light";
           const backIcon = theme === "dark" ? "left_arrow_w.svg" : "left_arrow_b.svg"
+
+          const authorText = post.author?.[lang] || "";
+          const typeText = post.type?.[lang] || "";
 
           container.innerHTML = `
             <article class="full-post">
@@ -86,7 +85,8 @@ if (!postNumber) {
               </section>
               <div class="post-meta">
                 <span class="post-date">${post.date}</span> |
-                <span class="post-tags">${tags}</span>
+                ${typeText ? `<span class="post-author">${typeText}</span>` : ""}
+                ${authorText ? `| <span class="post-author">${authorText}</span>` : ""}
               </div>
               <hr class="rect-line" />
               <div class="post-content">${htmlContent}</div>
